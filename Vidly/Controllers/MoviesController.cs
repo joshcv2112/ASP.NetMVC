@@ -17,14 +17,10 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
-        public ActionResult ByReleaseDate(int year, int month)
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
+        public ActionResult ByReleaseYear(int year, int month)
         {
             return Content($"{year}/{month}");
-        }
-
-        public ActionResult Edit(int id)
-        {
-            return Content("id=" + id);
         }
 
         public ActionResult Index(int? pageIndex, string sortBy)
